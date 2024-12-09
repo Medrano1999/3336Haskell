@@ -47,7 +47,7 @@ data Stmt
     | Print Expr                     -- Print statement
     | FuncDecl Var [Var] Statements  -- Function declaration
     | Return Expr                    -- Return statement
-    | Switch Expr [Case] (Maybe Statements) -- Switch-case statement: switch (<expr>) <cases>
+    | Switch Expr [Case] (Maybe Statements) -- Switch-case statement
 
 data Case = Case Val Statements
 

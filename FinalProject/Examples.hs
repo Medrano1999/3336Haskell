@@ -10,39 +10,39 @@ e1 = BinExpr (Value (ValI 2)) Add (Value (ValI 3))
 e2 :: Expr
 e2 = BinExpr (Value (ValI 2)) Add (BinExpr (Value (ValI 3)) Mul (Value (ValI 5)))
 
--- Not (!)
+-- MIDSEMESTER: Not (!)
 eNotTrue :: Expr
 eNotTrue = UnaryExpr Not (Value (ValB True)) -- not True
 
--- Not (!)
+-- MIDSEMESTER: Not (!)
 eNotFalse :: Expr
 eNotFalse = UnaryExpr Not (Value (ValB False)) -- not False
 
--- Boolean AND operation: true && false
+-- MIDSEMESTER: Boolean AND operation: true && false
 eAnd :: Expr
 eAnd = BinExpr (Value (ValB True)) And (Value (ValB False))
 
--- Boolean OR operation: true || false
+-- MIDSEMESTER: Boolean OR operation: true || false
 eOr :: Expr
 eOr = BinExpr (Value (ValB True)) Or (Value (ValB False))
 
--- Not Equal
+-- NEW: Not Equal
 eNotEqual :: Expr
 eNotEqual = BinExpr (Value (ValI 5)) NotEq (Value (ValI 10))  -- Should evaluate to True
 
--- Equal
+-- NEW: Equal
 eEqual :: Expr
 eEqual = BinExpr (Value (ValI 5)) Eq (Value (ValI 5))  -- Should evaluate to True
 
--- Greater Than
+-- NEW: Greater Than
 eGreaterThan :: Expr
 eGreaterThan = BinExpr (Value (ValI 5)) Syntax.GT (Value (ValI 3)) -- 5 > 3
 
--- Less Than
+-- NEW: Less Than
 eLessThan :: Expr
 eLessThan = BinExpr (Value (ValI 2)) Syntax.LT (Value (ValI 10)) -- 2 < 10
 
--- String concatenation: "Hello " ++ "World"
+-- MIDSEMESTER: String concatenation: "Hello " ++ "World"
 eConcat :: Expr
 eConcat = BinExpr (Value (ValS "Hello ")) Concat (Value (ValS "World"))
 
@@ -74,7 +74,7 @@ stmtForLoopExample = For
     (Assign "Counter" TypeI (BinExpr (Ref "Counter") Add (Value (ValI 1))))  -- Increment: Counter = Counter + 1
     (End (Print (Ref "Counter")))  -- Body: print Counter
 
--- Do-While loop: do { print Counter; Counter = Counter + 1 } while (Counter < 3)
+-- NEW: Do-While loop: do { print Counter; Counter = Counter + 1 } while (Counter < 3)
 stmtDoWhile :: Stmt
 stmtDoWhile = DoWhile
     (Seq
@@ -82,19 +82,19 @@ stmtDoWhile = DoWhile
         (End (Assign "Counter" TypeI (BinExpr (Ref "Counter") Add (Value (ValI 1))))))
     (BinExpr (Ref "Counter") Syntax.LT (Value (ValI 3)))
 
--- Array Indexing Example
+-- NEW: Array Indexing Example
 stmtArrayIndexExample :: Expr
 stmtArrayIndexExample = Index (Value (ValArray [ValI 10, ValI 20, ValI 30])) (Value (ValI 1))
 
--- Array Length Example
+-- NEW: Array Length Example
 stmtArrayLengthExample :: Expr
 stmtArrayLengthExample = Length (Value (ValArray [ValI 1, ValI 2, ValI 3]))  -- Should evaluate to 3
 
--- String Length Example
+-- NEW: String Length Example
 stmtStringLengthExample :: Expr
 stmtStringLengthExample = Length (Value (ValS "Hello"))
 
--- Switch-Case Example
+-- NEW: Switch-Case Example
 stmtSwitchCaseExample :: Stmt
 stmtSwitchCaseExample = Switch (Value (ValI 2))
     [ Case (ValI 1) (End (Print (Value (ValS "Case 1")))),
