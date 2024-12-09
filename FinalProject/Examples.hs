@@ -50,13 +50,17 @@ eConcat = BinExpr (Value (ValS "Hello ")) Concat (Value (ValS "World"))
 eIfElse :: Expr
 eIfElse = IfElse (BinExpr (Value (ValI 5)) GEq (Value (ValI 3))) (Value (ValS "Yes")) (Value (ValS "No"))
 
--- Variable assignment: A = 10
-stmtAssign :: Stmt
-stmtAssign = Assign "A" TypeI (Value (ValI 10))
+-- NEW (use of char): Character Assignment Example: Assign 'c' to variable A
+stmtCharAssign :: Stmt
+stmtCharAssign = Assign "A" TypeC (Value (ValC 'c'))  -- A:char = 'c'
 
--- Print statement: print A
-stmtPrint :: Stmt
-stmtPrint = Print (Ref "A")
+-- Print Character Example: Print variable A
+stmtCharPrint :: Stmt
+stmtCharPrint = Print (Ref "A")  -- print 
+
+-- NEW: Program for assigning and printing character
+progCharSequence :: Program
+progCharSequence = BeginEnd (Seq stmtCharAssign (End stmtCharPrint))
 
 -- While loop: while (Counter < 3) { print Counter; Counter = Counter + 1 }
 stmtWhile :: Stmt
