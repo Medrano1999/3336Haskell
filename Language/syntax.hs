@@ -10,12 +10,22 @@ module Syntax where
 {-
 <program> -> begin <stmts> end
 <stmts> -> <stmt> | <stmt>;<stmts>
-<stmt> -> <var> = <expr> | while <expr> <stmts> | for <stmt> <expr> <stmt> <stmts> | print <expr> -- | if <expr> then <stmts> else <stmts>
+<stmt> -> <var> = <expr> 
+                    | while <expr> <stmts> 
+                    | for <stmt> <expr> <stmt> <stmts> 
+                    | print <expr> -- 
+                    | if <expr> then <stmts> else <stmts>
 <var> -> string
 <op> -> + | - | * | / | >=
-<expr> -> <val> | <expr> <op> <expr> | if <expr> then <expr> else <expr>
-    | func <var> <expr> | <expr> <expr> | <var>
-<val> -> integers | booleans | error
+<expr> -> <val> 
+            | <expr> <op> <expr> 
+            | if <expr> then <expr> else <expr>
+            | func <var> <expr> 
+            | <expr> <expr> 
+            | <var>
+<val> -> integers 
+            | booleans 
+            | error
 <env> -> [(<var>, <val>)]
 <result> -> <env> | error
 -}
